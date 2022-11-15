@@ -12,7 +12,7 @@ import { FacturaEntity } from './entities/factura.entity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '1234567890',
+      password: 'admin',
       database: 'facturacion',
       entities: [FacturaEntity, DetalleFacturaEntity],
       synchronize: false,
