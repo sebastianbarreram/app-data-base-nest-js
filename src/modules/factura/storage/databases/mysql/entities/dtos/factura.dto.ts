@@ -1,4 +1,4 @@
-import { FacturaDetalleDto } from './factura-detalle.dto';
+import { FacturaDetalleDto } from '../../../../../../detalle-factura/storage/dtos/factura-detalle.dto';
 
 export class FacturaDto {
   clienteNombre: string;

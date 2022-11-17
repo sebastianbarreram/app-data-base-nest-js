@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { DetalleFacturaEntity } from './entities/detalle-factura.entity';
-import { FacturaEntity } from './entities/factura.entity';
+import { AppService } from './modules/main/services/app.service';
+import { DetalleFacturaEntity } from './modules/detalle-factura/storage/databases/mysql/entities/detalle-factura.entity';
+import { FacturaEntity } from './modules/factura/storage/databases/mysql/entities/factura.entity';
+import { AppController } from './modules/main/controllers/app.controller';
+import { FacturaModule } from './modules/factura/factura.module';
+import { DetalleFacturaModule } from './modules/detalle-factura/detalle-factura.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { FacturaEntity } from './entities/factura.entity';
       entities: [FacturaEntity, DetalleFacturaEntity],
       synchronize: false,
     }),
+    FacturaModule,
+    DetalleFacturaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

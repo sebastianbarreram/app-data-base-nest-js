@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { DetalleFacturaEntity } from './detalle-factura.entity';
-import { FacturaDto } from '../dto/factura.dto';
+import { DetalleFacturaEntity } from '../../../../../detalle-factura/storage/databases/mysql/entities/detalle-factura.entity';
+import { FacturaDto } from './dtos/factura.dto';
 
 @Entity('tbl_factura', { schema: 'facturacion' })
 export class FacturaEntity {
