@@ -6,18 +6,22 @@ import { FacturaEntity } from './modules/factura/storage/databases/mysql/entitie
 import { AppController } from './modules/main/controllers/app.controller';
 import { FacturaModule } from './modules/factura/factura.module';
 import { DetalleFacturaModule } from './modules/detalle-factura/detalle-factura.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'admin',
-      database: 'facturacion',
-      entities: [FacturaEntity, DetalleFacturaEntity],
-      synchronize: false,
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      useFactory: async (configService: ConfigService) => ({
+        type: 'mysql',
+        host: configService.get<string>('MYSQL_HOST'),
+        port: configService.get<number>('MYSQL_PORT'),
+        username: configService.get<string>('MYSQL_USER'),
+        password: configService.get<string>('MYSQL_PASSWORD'),
+        database: configService.get<string>('MYSQL_DB'),
+        entities: [FacturaEntity, DetalleFacturaEntity],
+      }),
+      inject: [ConfigService],
     }),
     FacturaModule,
     DetalleFacturaModule,
