@@ -7,6 +7,10 @@ import { AppController } from './modules/main/controllers/app.controller';
 import { FacturaModule } from './modules/factura/factura.module';
 import { DetalleFacturaModule } from './modules/detalle-factura/detalle-factura.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
+import { HelloWorldResolver } from './modules/main/resolvers/hello-world/hello-world.resolver';
 
 @Module({
   imports: [
@@ -25,8 +29,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     FacturaModule,
     DetalleFacturaModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      debug: true,
+      playground: true,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, HelloWorldResolver],
 })
 export class AppModule {}
