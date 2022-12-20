@@ -2,6 +2,48 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type FacturaEntity {
+  id: Int!
+  clienteNombre: String!
+  clienteCorreo: String
+  detalleFactura: [DetalleFacturaEntity!]!
+}
+
+type DetalleFacturaEntity {
+  id: Int!
+  facturaId: Int!
+  producto: String!
+  cantidad: Int!
+  precio: Int!
+  total: Int!
+}
+
 type Query {
   helloWorld: String!
+  helloWorld2(data: Int!): String!
+  getAllFacturas: [FacturaEntity!]!
+}
+
+type Mutation {
+  createFactura(factura: FacturaDto!): FacturaEntity!
+}
+
+input FacturaDto {
+  """Id del producto"""
+  id: String
+
+  """Nombre del cliente"""
+  clienteNombre: String!
+
+  """Correo electrónico del cliente"""
+  clienteCorreo: String!
+  detalleFactura: [FacturaDetalleDto!]
+}
+
+input FacturaDetalleDto {
+  producto: String!
+  cantidad: Int!
+  precio: Int!
+  total: Int!
+  factura: FacturaDto
 }

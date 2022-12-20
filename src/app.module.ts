@@ -12,6 +12,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { HelloWorldResolver } from './modules/main/resolvers/hello-world/hello-world.resolver';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { FacturaService } from './modules/factura/services/factura.service';
 
 @Module({
   imports: [
@@ -39,6 +40,6 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, HelloWorldResolver],
+  providers: [AppService, HelloWorldResolver, FacturaService],
 })
 export class AppModule {}
