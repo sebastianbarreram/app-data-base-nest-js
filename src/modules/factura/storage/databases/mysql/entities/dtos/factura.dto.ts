@@ -6,7 +6,7 @@ import {
   IsString,
   Length,
 } from 'class-validator';
-import { FacturaDetalleDto } from 'src/modules/detalle-factura/storage/dtos/factura-detalle.dto';
+import { FacturaDetalleDto } from '../../../../../../detalle-factura/storage/dtos/factura-detalle.dto';
 import { FacturaInterface } from './interfaces/factura.interface';
 
 @InputType()

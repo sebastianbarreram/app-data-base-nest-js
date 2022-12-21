@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { FacturaDetalleDto } from 'src/modules/detalle-factura/storage/dtos/factura-detalle.dto';
+import { FacturaDetalleDto } from '../../../dtos/factura-detalle.dto';
 import {
   Column,
   Entity,
