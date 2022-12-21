@@ -4,7 +4,6 @@ import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 export class AuthGuardFactura implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const header = context.getArgs()[2].req.headers.authorization; //GraphQL header authorization
-    console.log('header :>> ', header);
     // const header = context.switchToHttp().getRequest().headers.authorization; //Este aplica para http request por ej con postman
     if (header) {
       const authorization = header.split(' ')[1];

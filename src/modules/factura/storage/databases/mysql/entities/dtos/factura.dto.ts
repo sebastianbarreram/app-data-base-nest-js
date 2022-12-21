@@ -30,7 +30,10 @@ export class FacturaDto implements FacturaInterface {
   @IsString({
     message: 'The `clienteCorreo` argument must be of type string',
   })
-  @Field(() => String, { description: 'Correo electrónico del cliente' })
+  @Field(() => String, {
+    description: 'Correo electrónico del cliente',
+    nullable: true,
+  })
   clienteCorreo: string;
 
   @IsOptional()

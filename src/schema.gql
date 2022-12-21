@@ -36,7 +36,7 @@ input FacturaDto {
   clienteNombre: String!
 
   """Correo electrónico del cliente"""
-  clienteCorreo: String!
+  clienteCorreo: String
   detalleFactura: [FacturaDetalleDto!]
 }
 

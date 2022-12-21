@@ -49,7 +49,6 @@ export class FacturaController {
   }
 
   @Delete('facturas/:id')
-  @UseGuards(AuthGuardFactura)
   deleteFactura(@Param('id') id: string): Promise<boolean> {
     return this.facturaService.deleteFactura(id);
   }

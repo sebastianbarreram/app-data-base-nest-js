@@ -28,6 +28,7 @@ export class HelloWorldResolver {
   }
 
   @Mutation(() => FacturaEntity)
+  @UseInterceptors(ResponseFacturaInterceptor)
   async createFactura(
     @Args('factura', { type: () => FacturaDto })
     factura: FacturaDto,
